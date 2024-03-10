@@ -14,12 +14,13 @@ recognition.interimResults = true;
 
 let isRecording = false;
 
-// Event listener for record button
+// Event listener for holding down the record button
 recordButton.addEventListener('mousedown', () => {
     isRecording = true;
     recognition.start();
 });
 
+// Event listener for releasing the record button
 recordButton.addEventListener('mouseup', () => {
     isRecording = false;
     recognition.stop();
@@ -95,3 +96,4 @@ languages.forEach(language => {
     option.textContent = language.name;
     languageSelect.appendChild(option);
 });
+
