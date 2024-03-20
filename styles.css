@@ -1,90 +1,105 @@
-/* CSS code in styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-.top-bar {
-    background-color: #007bff; /* Blue color */
-    color: white;
-    text-align: center;
+.black-bar {
+    background-color: black;
     padding: 10px 0;
+    text-align: center;
+    position: relative; /* Add relative positioning to the black bar */
+}
+
+.title {
+    color: white;
+    margin: 0;
+}
+
+.moving-ball {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red); /* Rainbow gradient */
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: -20px; /* Initial position */
+    animation: moveBall 4s linear forwards; /* Animation properties */
+}
+
+@keyframes moveBall {
+    0% {
+        left: -20px; /* Initial position */
+    }
+    50% {
+        left: calc(100% - 20px); /* Move to the end of the black bar */
+    }
+    51% {
+        left: calc(100% - 20px); /* Hold the position until the end of animation */
+    }
+    100% {
+        left: calc(100% - 20px); /* Hold the position until the end of animation */
+    }
 }
 
 .container {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.record-button {
-    width: 80px; /* Reduced width */
-    height: 80px; /* Reduced height */
-    border-radius: 50%;
-    background-color: #007bff; /* Blue color */
-    display: inline-block;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.record-button:active {
-    background-color: orange; /* Orange color while holding */
-}
-
-#languageSelect {
-    margin-top: 10px;
-}
-
-.output-container {
-    position: relative;
-}
-
-#output {
-    margin-top: 20px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    min-height: 100px;
-}
-
-#copyButton {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    cursor: pointer;
-}
-
-.how-to-use {
-    text-align: center;
-    margin-top: 50px;
-}
-
-.how-to-use h2 {
-    color: #007bff; /* Blue color */
-}
-
-.how-to-use p {
     max-width: 600px;
-    margin: 20px auto; /* Added margin between sentences */
-    line-height: 1.5;
-}
-
-.about {
+    margin: 0 auto;
     text-align: center;
-    margin-top: 50px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.about h2 {
-    color: #007bff; /* Blue color */
+.container > * {
+    margin-bottom: 10px; /* Add space between elements */
 }
 
-.about p {
-    max-width: 600px;
-    margin: 20px auto; /* Added margin between sentences */
-    line-height: 1.5;
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.extra-bottom-bar {
-    background-color: #007bff; /* Blue color */
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
+.button-group > * {
+    margin: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+    .button-group {
+        flex-direction: column;
+    }
+}
+
+textarea {
     width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
+    padding: 10px;
 }
+
+button, select {
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.usage {
+    margin-top: 20px;
+}
+
+.usage ol {
+    text-align: left;
+    margin-left: 20px;
+}
+
+.usage ol li {
+    margin-bottom: 10px;
+}
+
+.centered {
+    text-align: center;
+}
+
 
