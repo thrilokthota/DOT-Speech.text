@@ -3,40 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speech-to-Text</title>
+    <title>Speech to Text Converter</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="top-bar">
-        <h1>Speech to Text</h1>
+    <div class="black-bar">
+        <h1 class="title">DOT Speech.text</h1>
+        <div class="moving-ball rainbow"></div>
     </div>
-    <div class="container">
-        <div class="record-button" id="recordButton"></div>
-        <select id="languageSelect">
-            <!-- Language options will be populated dynamically by JavaScript -->
-        </select>
-        <div class="output-container">
-            <div id="output"></div>
-            <button id="copyButton" onclick="copyText()">Copy</button>
+    <div id="recognized-text-container" class="recognized-text-container" style="display: none;">
+        <div class="centered">
+            <h3>Recognized Text:</h3>
+            <p id="recognized-text"></p>
+        </div>
+        <div class="centered">
+            <h3>Translation:</h3>
+            <p id="translated-text"></p>
         </div>
     </div>
-    <div class="how-to-use">
-        <h2>How to Use</h2>
-        <p><strong>Step 1:</strong> Press and hold the blue button to start recording your voice.</p>
-        <p><strong>Step 2:</strong> Select the language you want to speak from the dropdown menu.</p>
-        <p><strong>Step 3:</strong> Release the button to stop recording and see your speech converted to text.</p>
-        <p><strong>Step 4:</strong> Explore additional features by selecting different languages!</p>
+    <div class="container">
+        <h2>Speech to Text Converter</h2>
+        <div class="button-group">
+            <button id="start-btn">Start</button>
+            <button id="stop-btn">Stop</button>
+            <button id="edit-btn">Edit</button>
+            <button id="copy-btn">Copy</button>
+        </div>
+        <textarea id="input-text" placeholder="Your speech will appear here..." readonly></textarea>
+        <div class="button-group">
+            <select id="speech-language-select">
+            <option value="en-IN">Speech-Indian English</option>
+            <option value="en-US">Speech-English (US)</option>
+            <option value="te-IN">Speech-Telugu (India)</option>
+            <option value="hi-IN">Speech-Hindi (India)</option>
+            <option value="ta-IN">Speech-Tamil (India)</option>
+            <option value="es-ES">Speech-Spanish (Spain)</option>
+            <option value="mr-IN">Speech-Marathi (India)</option>
+            <option value="gu-IN">Speech-Gujarati (India)</option>
+            <option value="bn-BD">Speech-Bangla (Bangladesh)</option>
+            <option value="ur-PK">Speech-Urdu (Pakistan)</option>
+            <option value="af-ZA">Speech-Africaans (South Africa)</option>
+            <option value="ar-SA">Speech-Arabic (Saudi Arabia)</option>
+            <option value="de-DE">Speech-German (Germany)</option>
+            <option value="ja-JP">Speech-Japanese (Japan)</option>
+            <option value="zh-CN">Speech-Chinese (Simplified, China)</option>
+            <option value="zh-HK">Speech-Chinese (Traditional, Hong Kong)</option>
+            <option value="zh-TW">Speech-Chinese (Traditional, Taiwan)</option>
+            <option value="el-GR">Speech-Greek (Greece)</option>
+            <option value="fr-FR">Speech-French (France)</option>
+            <option value="ko-KR">Speech-Korean (South Korea)</option>
+            <option value="kn-IN">Speech-Kannada (India)</option>
+            <option value="ml-IN">Speech-Malayalam (India)</option>
+            <option value="pa-IN">Speech-Punjabi (India)</option>              
+                <!-- Language options -->
+            </select>
+            <select id="language-select">
+            <option value="en-IN">Text: Indian English</option>
+            <option value="en-US">Text: English (US)</option>
+            <option value="te-IN">Text: Telugu (India)</option>
+            <option value="hi-IN">Text: Hindi (India)</option>
+            <option value="ta-IN">Text: Tamil (India)</option>
+            <option value="es-ES">Text: Spanish (Spain)</option>
+            <option value="mr-IN">Text: Marathi (India)</option>
+            <option value="gu-IN">Text: Gujarati (India)</option>
+            <option value="bn-BD">Text: Bangla (Bangladesh)</option>
+            <option value="ur-PK">Text: Urdu (Pakistan)</option>
+            <option value="af-ZA">Text: Africaans (South Africa)</option>
+            <option value="ar-SA">Text: Arabic (Saudi Arabia)</option>
+            <option value="de-DE">Text: German (Germany)</option>
+            <option value="ja-JP">Text: Japanese (Japan)</option>
+            <option value="zh-CN">Text: Chinese (Simplified, China)</option>
+            <option value="zh-HK">Text: Chinese (Traditional, Hong Kong)</option>
+            <option value="zh-TW">Text: Chinese (Traditional, Taiwan)</option>
+            <option value="el-GR">Text: Greek (Greece)</option>
+            <option value="fr-FR">Text: French (France)</option>
+            <option value="ko-KR">Text: Korean (South Korea)</option>
+            <option value="kn-IN">Text: Kannada (India)</option>
+            <option value="ml-IN">Text: Malayalam (India)</option>
+            <option value="pa-IN">Text: Punjabi (India)</option>              
+                <!-- Text options -->
+            </select>
+        </div>
+        <!-- Usage instructions -->
+        <div class="usage">
+            <h3>How to Use:</h3>
+            <ol>
+                <li>Click the "Start" button to begin speech recognition.</li>
+                <li>Speak into your device's microphone.</li>
+                <li>The recognized text will appear in the text area.</li>
+                <li>You can edit the text, copy it, or translate it using the available options.</li>
+            </ol>
+        </div>
     </div>
-    <div class="about">
-        <h2>About</h2>
-        <p>Our website is the best tool for multi-language speech-to-text conversion. With support for a wide range of languages, it's perfect for users from diverse linguistic backgrounds.</p>
-        <p>Whether you're a student, professional, or language enthusiast, our platform offers an intuitive and efficient way to transcribe speech into text accurately.</p>
-        <p>Experience seamless integration with various languages and enjoy the convenience of converting spoken words into written text with just a few clicks.</p>
-        <p>Start using our website today and explore the endless possibilities of speech recognition and translation!</p>
-    </div>
-    <div class="extra-bottom-bar">
-        <p>@ AI generated in 2024</p>
-    </div>
+    <!-- Google AdSense ad unit -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXX" // Replace with your AdSense client ID
+         data-ad-slot="XXXXXXXXXX" // Replace with your AdSense ad slot ID
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
